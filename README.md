@@ -28,7 +28,7 @@ Usage:
 
 * Implement Lazy and Eager graph,
 described by the following properties:
-```javascript
+```clojure
 (def stats-graph
 {:n (fnk [xs] (count xs))
  :m (fnk [xs n] (/ (sum identity xs) n))

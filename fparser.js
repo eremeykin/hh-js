@@ -8,7 +8,7 @@ export function parseFunctionArgs(fun) {
 
     let varsString = bracketRegExp.exec(funString);
     if (varsString == null) {
-        return null;
+        return null; //parsing error
     }
     varsString = varsString[1];
     let vars = varsString.split(',');

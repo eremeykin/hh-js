@@ -82,6 +82,8 @@ function afFun(
 function agFun( ){}
 function ahFun(/*()*/){}
 function aiFun(/*()*/ /*()*/ /*()*/ /*()*/){}
+let baFun = () =>{};
+let bbFun = (x,y,z) =>{};
 
 
 
@@ -123,3 +125,5 @@ console.assert(eq(parseFunctionArgs(afFun), []), "af");
 console.assert(eq(parseFunctionArgs(agFun), []), "ag");
 console.assert(eq(parseFunctionArgs(ahFun), []), "ah");
 console.assert(eq(parseFunctionArgs(aiFun), []), "ai");
+console.assert(eq(parseFunctionArgs(baFun), []), "ba");
+console.assert(eq(parseFunctionArgs(bbFun), ["x", "y", "z"]), "bb");

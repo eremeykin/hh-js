@@ -27,7 +27,6 @@ function sFun(x,
               y,
               z) {}
 function tFun(
-
     x,
 
 
@@ -84,7 +83,7 @@ function ahFun(/*()*/){}
 function aiFun(/*()*/ /*()*/ /*()*/ /*()*/){}
 let baFun = () =>{};
 let bbFun = (x,y,z) =>{};
-
+let bcFun = (/* /**/) =>{};
 
 
 
@@ -127,3 +126,4 @@ console.assert(eq(parseFunctionArgs(ahFun), []), "ah");
 console.assert(eq(parseFunctionArgs(aiFun), []), "ai");
 console.assert(eq(parseFunctionArgs(baFun), []), "ba");
 console.assert(eq(parseFunctionArgs(bbFun), ["x", "y", "z"]), "bb");
+console.assert(eq(parseFunctionArgs(bcFun), []), "bc");

@@ -1,6 +1,6 @@
 import {parseFunctionArgs} from './fparser.js';
 
-class LazyGraph {
+export class LazyGraph {
 
     receiveGraph(graph) {
         this.graph = graph;
@@ -13,6 +13,9 @@ class LazyGraph {
 
     calcVertex(vertexName) {
         let toCalculate = this.vertices[vertexName];
+        if (typeof toCalculate == 'undefined'){
+            throw new Error("The received graph doesn't define vertex: " + vertexName);
+        }
         let calculationResults = [];
         for (let i = 0; i < toCalculate.length; i++) {
             let vertexResult = this.calcVertex(toCalculate[i].toString());
@@ -21,7 +24,3 @@ class LazyGraph {
         return this.graph[vertexName](...calculationResults);
     }
 }
-let graphDefinition = {x: (y, z, t) => 1 + y + z + 3 * t, y: () => 1, z: () => 3, t: (y, z) => 5+y+z};
-let lazyGraph = new LazyGraph();
-let x = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.log("x = "+x);

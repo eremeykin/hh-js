@@ -149,8 +149,13 @@ graphDefinition = {
     z: (x) => x + 1
 
 };
-calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 0, test_n);
+
+try{
+    calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
+    console.assert(false, test_n);
+} catch (e) {
+    console.assert(e.toString() === "Error: There is a loop in received graph", test_n);
+}
 
 
 

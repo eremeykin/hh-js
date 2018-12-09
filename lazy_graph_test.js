@@ -184,7 +184,7 @@ console.assert(calcResult === -17, test_n);
 let c=0;
 let oneChanceFunction = function (){
     if(c>0){
-        throw Error('You missed your chance, don\'t ask me one more!');
+        throw Error('You missed your chance, don\'t ask me more!');
     }
     c=c+1;
     return -10;

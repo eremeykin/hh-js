@@ -28,7 +28,8 @@ export class LazyGraph {
                 let numberOfArguments = this.vertices[currentVertex].length;
                 let currentArgs = resultStack.splice(resultStack.length - numberOfArguments,numberOfArguments);
                 let res = this.graph[currentVertex](...currentArgs); // evaluate function
-                this.graph[currentVertex] = ()=>res; // cache result
+                this.graph[currentVertex] = ()=>res; // cache result,
+                // can't do this caching e.g if the function is not deterministic !
                 resultStack.push(res);
                 vertexStack.pop();
                 indexStack.pop();

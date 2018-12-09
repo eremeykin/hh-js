@@ -79,7 +79,7 @@ try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
     console.assert(false, test_n);
 } catch (e) {
-    console.assert(e.toString() === "Error: The received graph doesn't define vertex: w", test_n);
+    console.assert(e.toString() === "Error: The received graph doesn't define the vertex: w", test_n);
 }
 
 test_n='test #8';
@@ -90,7 +90,7 @@ try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
     console.assert(false, test_n);
 } catch (e) {
-    console.assert(e.toString() === "Error: The received graph doesn't define vertex: x", test_n);
+    console.assert(e.toString() === "Error: The received graph doesn't define the vertex: x", test_n);
 }
 
 test_n = 'test #9';
@@ -156,6 +156,43 @@ try{
 } catch (e) {
     console.assert(e.toString() === "Error: There is a loop in received graph", test_n);
 }
+
+test_n = 'test #12';
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    x: (y,z) =>z + y + 1,
+    y: (v) => v + 1,
+    z: (v) => v + 1,
+    v: () => -10,
+
+};
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
+console.assert(calcResult === -17, test_n);
+
+
+let c=0;
+let oneChanceFunction = function (){
+    if(c>0){
+        throw Error('You missed your chance, don\'t ask me one more!');
+    }
+    c=c+1;
+    return -10;
+};
+
+test_n = 'test #13';
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    x: (y,z) =>z + y + 1,
+    y: (t) => t + 1,
+    t: (u) => u+1,
+    u: (p) => p+1,
+    p: (v) => v+1,
+    z: (v) => v + 1,
+    v: oneChanceFunction,
+
+};
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
+console.assert(calcResult === -14, test_n);
 
 
 

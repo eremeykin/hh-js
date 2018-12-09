@@ -25,10 +25,8 @@ export class LazyGraph {
             }
 
             if (nextIndex + 1 > this.vertices[currentVertex].length){ // all child vertices has been visited
-                let currentArgs = [];
-                for(let i=0; i<this.vertices[currentVertex].length; i++){
-                    currentArgs.push(resultStack.pop()); // pop arguments from stack
-                }
+                let numberOfArguments = this.vertices[currentVertex].length;
+                let currentArgs = resultStack.splice(resultStack.length - numberOfArguments,numberOfArguments);
                 let res = this.graph[currentVertex](...currentArgs); // evaluate function
                 this.graph[currentVertex] = ()=>res; // cache result
                 resultStack.push(res);

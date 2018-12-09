@@ -16,6 +16,7 @@ graphDefinition = {
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 4, test_n);
 
+
 test_n = 'test #2';
 lazyGraph = new LazyGraph();
 graphDefinition = {
@@ -25,6 +26,7 @@ graphDefinition = {
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('y');
 console.assert(calcResult === 5, test_n);
 
+
 test_n = 'test #3';
 lazyGraph = new LazyGraph();
 graphDefinition = {
@@ -33,6 +35,7 @@ graphDefinition = {
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 9, test_n);
+
 
 test_n = 'test #4';
 lazyGraph = new LazyGraph();
@@ -44,6 +47,7 @@ graphDefinition = {
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 19, test_n);
 
+
 test_n = 'test #5';
 lazyGraph = new LazyGraph();
 graphDefinition = {
@@ -53,6 +57,7 @@ graphDefinition = {
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 29, test_n);
+
 
 test_n = 'test #6';
 lazyGraph = new LazyGraph();
@@ -64,6 +69,7 @@ graphDefinition = {
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 33, test_n);
+
 
 test_n = 'test #7';
 lazyGraph = new LazyGraph();
@@ -82,6 +88,7 @@ try{
     console.assert(e.toString() === "Error: The received graph doesn't define the vertex: w", test_n);
 }
 
+
 test_n='test #8';
 lazyGraph = new LazyGraph();
 graphDefinition = {
@@ -92,6 +99,7 @@ try{
 } catch (e) {
     console.assert(e.toString() === "Error: The received graph doesn't define the vertex: x", test_n);
 }
+
 
 test_n = 'test #9';
 lazyGraph = new LazyGraph();
@@ -106,6 +114,7 @@ graphDefinition = {
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 8, test_n);
 
+
 test_n = 'test #10';
 lazyGraph = new LazyGraph();
 graphDefinition = {
@@ -118,6 +127,7 @@ graphDefinition = {
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 8, test_n);
+
 
 test_n = 'test #11';
 lazyGraph = new LazyGraph();
@@ -140,6 +150,7 @@ graphDefinition = {
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 243, test_n);
+
 
 test_n = 'test #11';
 lazyGraph = new LazyGraph();
@@ -179,6 +190,7 @@ let oneChanceFunction = function (){
     return -10;
 };
 
+
 test_n = 'test #13';
 lazyGraph = new LazyGraph();
 graphDefinition = {
@@ -194,6 +206,69 @@ graphDefinition = {
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === -14, test_n);
 
+
+test_n = 'test #14';
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    n: (xs) =>  xs.length ,
+    m: (xs, n) => xs.reduce((total, num)=>(total+num)) / n ,
+    m2: (xs, n) => xs.reduce((total, num)=>(total+num*num)) / n ,
+    v: (m, m2)=> m*m - m2,
+    xs: ()=> [1,2,3,4,5,6]
+};
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
+console.assert(calcResult === 3.5, test_n);
+
+
+test_n = 'test #15'; // change arguments order - 1
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    n: (xs) =>  xs.length ,
+    m: (n, xs) => xs.reduce((total, num)=>(total+num)) / n ,
+    m2: (xs, n) => xs.reduce((total, num)=>(total+num*num)) / n ,
+    v: (m, m2)=> m*m - m2,
+    xs: ()=> [1,2,3,4,5,6]
+};
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
+console.assert(calcResult === 3.5, test_n);
+
+
+test_n = 'test #16'; // change arguments order - 2
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    n: (xs) =>  xs.length ,
+    m: (n, xs) => xs.reduce((total, num)=>(total+num)) / n ,
+    m2: (n, xs) => xs.reduce((total, num)=>(total+num*num)) / n ,
+    v: (m, m2)=> m*m - m2,
+    xs: ()=> [1,2,3,4,5,6]
+};
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
+console.assert(calcResult === 3.5, test_n);
+
+
+test_n = 'test #17';
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    n: (xs) =>  xs.length ,
+    m: (xs, n) => xs.reduce((total, num)=>(total+num)) / n ,
+    m2: (xs, n) => xs.reduce((total, num)=>(total+num**2)) / n ,
+    v: (m, m2)=> m**2 - m2,
+    xs: ()=> [1,2,3,4,5,6]
+};
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m2');
+console.assert((calcResult - 15.1666666666)**2 < 0.001, test_n);
+
+test_n = 'test #18'; //calc v
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    n: (xs) =>  xs.length ,
+    m: (xs, n) => xs.reduce((total, num)=>(total+num)) / n ,
+    m2: (xs, n) => xs.reduce((total, num)=>(total+num**2)) / n ,
+    v: (m, m2)=> m2 - m**2,
+    xs: ()=> [1,2,3,4,5,6]
+};
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('v');
+console.assert((calcResult - 2.916666666)**2 < 0.001, test_n);
 
 
 console.log('lazy_graph_test: Ok');

@@ -8,7 +8,7 @@ console.assert	= function(check, msg){
 
 let graphDefinition, lazyGraph, calcResult, test_n;
 
-test_n = 'test #1';
+test_n = 'lazy test #1';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: () => 4
@@ -17,7 +17,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 4, test_n);
 
 
-test_n = 'test #2';
+test_n = 'lazy test #2';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: () => 4,
@@ -27,7 +27,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('y');
 console.assert(calcResult === 5, test_n);
 
 
-test_n = 'test #3';
+test_n = 'lazy test #3';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y) => y + 4,
@@ -37,7 +37,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 9, test_n);
 
 
-test_n = 'test #4';
+test_n = 'lazy test #4';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y,z) => y + 4 + z,
@@ -48,7 +48,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 19, test_n);
 
 
-test_n = 'test #5';
+test_n = 'lazy test #5';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y,z) => y + 4 + z,
@@ -59,7 +59,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 29, test_n);
 
 
-test_n = 'test #6';
+test_n = 'lazy test #6';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y,z) => y + 4 + z,
@@ -71,7 +71,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 33, test_n);
 
 
-test_n = 'test #7';
+test_n = 'lazy test #7';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y) => y + 1,
@@ -89,7 +89,7 @@ try{
 }
 
 
-test_n='test #8';
+test_n='lazy test #8';
 lazyGraph = new LazyGraph();
 graphDefinition = {
 };
@@ -101,7 +101,7 @@ try{
 }
 
 
-test_n = 'test #9';
+test_n = 'lazy test #9';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y) => y + 1,
@@ -115,7 +115,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 8, test_n);
 
 
-test_n = 'test #10';
+test_n = 'lazy test #10';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y) => y + 1,
@@ -129,7 +129,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 8, test_n);
 
 
-test_n = 'test #11';
+test_n = 'lazy test #11';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y) => y + 1,
@@ -152,7 +152,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === 243, test_n);
 
 
-test_n = 'test #11';
+test_n = 'lazy test #11';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y) => y + 1,
@@ -168,7 +168,7 @@ try{
     console.assert(e.toString() === "Error: There is a loop in received graph", test_n);
 }
 
-test_n = 'test #12';
+test_n = 'lazy test #12';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y,z) =>z + y + 1,
@@ -191,7 +191,7 @@ let oneChanceFunction = function (){
 };
 
 
-test_n = 'test #13';
+test_n = 'lazy test #13';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y,z) =>z + y + 1,
@@ -207,7 +207,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 console.assert(calcResult === -14, test_n);
 
 
-test_n = 'test #14';
+test_n = 'lazy test #14';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
@@ -220,7 +220,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
 console.assert(calcResult === 3.5, test_n);
 
 
-test_n = 'test #15'; // change arguments order - 1
+test_n = 'lazy test #15'; // change arguments order - 1
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
@@ -233,7 +233,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
 console.assert(calcResult === 3.5, test_n);
 
 
-test_n = 'test #16'; // change arguments order - 2
+test_n = 'lazy test #16'; // change arguments order - 2
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
@@ -246,7 +246,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
 console.assert(calcResult === 3.5, test_n);
 
 
-test_n = 'test #17';
+test_n = 'lazy test #17';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
@@ -258,7 +258,7 @@ graphDefinition = {
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m2');
 console.assert((calcResult - 15.1666666666)**2 < 0.001, test_n);
 
-test_n = 'test #18'; //calc v
+test_n = 'lazy test #18'; //calc v
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,

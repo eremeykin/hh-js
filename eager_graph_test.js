@@ -292,5 +292,39 @@ console.assert(calcResult.w === undefined, test_n);
 console.assert(calcResult.x === -616, test_n);
 console.assert(calcResult.y === -310, test_n);
 
+
+
+test_n = 'lazy test #16';
+eagerGraph = new EagerGraph();
+graphDefinition = {
+    n: (a) => a,
+    b: (n) => n,
+    z: (x) => x,
+    x: (z) => z,
+};
+calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
+console.assert(calcResult.a === undefined, test_n);
+console.assert(calcResult.b === undefined, test_n);
+console.assert(calcResult.x === undefined, test_n);
+console.assert(calcResult.z === undefined, test_n);
+console.assert(calcResult.n === undefined, test_n);
+
+test_n = 'lazy test #17';
+eagerGraph = new EagerGraph();
+graphDefinition = {
+    n: (xs) => xs.length,
+    m: (xs, n) => xs.reduce((store, item) => item + store, 0) / n,
+    m2: (xs, n) => xs.reduce((store, item) => item * store, 1) / n,
+    v: (m, m2) => m*m - m2,
+    xs: () => [1, 2, 3]
+};
+calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
+console.assert(calcResult.n === 3, test_n);
+console.assert(calcResult.m === 2, test_n);
+console.assert(calcResult.m2 === 2, test_n);
+console.assert(calcResult.v === 2, test_n);
+
+
+
 let lazyGraph; // copy-paste self foolproof guard. Whatever.
 console.log('eager_graph_test: Ok');

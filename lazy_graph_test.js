@@ -270,5 +270,41 @@ graphDefinition = {
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('v');
 console.assert((calcResult - 2.916666666)**2 < 0.001, test_n);
 
+test_n = 'lazy test #19';
+lazyGraph = new LazyGraph();
+graphDefinition = {
+    n: (a) => a,
+    b: (n) => n,
+    z: (x) => x,
+    x: (z) => z,
+};
+
+try{
+    calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
+    console.assert(false, test_n);
+} catch (e) {
+    console.assert(e.toString() === "Error: There is a loop in received graph", test_n);
+}
+
+test_n = 'lazy test #20';
+lazyGraph = new LazyGraph();
+
+graphDefinition = {
+    n: (xs) => xs.length,
+    m: (xs, n) => xs.reduce((store, item) => item + store, 0) / n,
+    m2: (xs, n) => xs.reduce((store, item) => item * store, 1) / n,
+    v: (m, m2) => m*m - m2,
+    xs: () => [1, 2, 3]
+};
+
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('n');
+console.assert(calcResult===3, test_n);
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
+console.assert(calcResult===2, test_n);
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m2');
+console.assert(calcResult===2, test_n);
+calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('v');
+console.assert(calcResult===2, test_n);
+
 
 console.log('lazy_graph_test: Ok');

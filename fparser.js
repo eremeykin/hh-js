@@ -8,7 +8,7 @@ export function parseFunctionArgs(fun) {
 
     let varsString = bracketRegExp.exec(funString); //inside brackets: (<here>)
     if (varsString == null) {
-        return null; //parsing error
+        throw new Error("Parsing error: can't find brackets expression in function definition");
     }
     varsString = varsString[1];
     let vars = varsString.split(',');

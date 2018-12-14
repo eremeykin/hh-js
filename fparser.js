@@ -1,10 +1,10 @@
 export function parseFunctionArgs(fun) {
     let funString = fun.toString();
     let bracketRegExp = /\(([\s\S]*?)\)/;
-    let singleLinecommentRegExp = /\/\/.*/g;
-    let multyLinecommentRegExp = /\s*\/\*[\s\S]*?\*\/\s*/g;
-    funString = funString.replace(singleLinecommentRegExp, '');
-    funString = funString.replace(multyLinecommentRegExp, '');
+    let singleLineCommentRegExp = /\/\/.*/g;
+    let multiLineCommentRegExp = /\s*\/\*[\s\S]*?\*\/\s*/g;
+    funString = funString.replace(singleLineCommentRegExp, '');
+    funString = funString.replace(multiLineCommentRegExp, '');
 
     let varsString = bracketRegExp.exec(funString); //inside brackets: (<here>)
     if (varsString == null) {

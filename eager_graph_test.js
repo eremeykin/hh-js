@@ -1,7 +1,7 @@
 import {EagerGraph} from './eager_graph.js';
 
 
-console.assert	= function(check, msg){
+function assert (check, msg){
     if( check )	return;
     throw new Error(msg || "Assertion failed!");
 };
@@ -19,7 +19,7 @@ graphDefinition = {
     x: () => 4
 };
 calcResult  = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === 4, test_n);
+assert(calcResult.x === 4, test_n);
 
 
 test_n = 'eager test #2';
@@ -29,8 +29,8 @@ graphDefinition = {
     y: () => 5
 };
 calcResult  = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === 4, test_n);
-console.assert(calcResult.y === 5, test_n);
+assert(calcResult.x === 4, test_n);
+assert(calcResult.y === 5, test_n);
 
 test_n = 'eager test #3';
 eagerGraph = new EagerGraph();
@@ -39,8 +39,8 @@ graphDefinition = {
     y: () => 5
 };
 calcResult  = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === 9, test_n);
-console.assert(calcResult.y === 5, test_n);
+assert(calcResult.x === 9, test_n);
+assert(calcResult.y === 5, test_n);
 
 
 test_n = 'eager test #4';
@@ -51,9 +51,9 @@ graphDefinition = {
     z: () => 10
 };
 calcResult  = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === 19, test_n);
-console.assert(calcResult.y === 5, test_n);
-console.assert(calcResult.z === 10, test_n);
+assert(calcResult.x === 19, test_n);
+assert(calcResult.y === 5, test_n);
+assert(calcResult.z === 10, test_n);
 
 
 test_n = 'eager test #5';
@@ -64,9 +64,9 @@ graphDefinition = {
     z: () => 10
 };
 calcResult  = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === 29, test_n);
-console.assert(calcResult.y === 15, test_n);
-console.assert(calcResult.z === 10, test_n);
+assert(calcResult.x === 29, test_n);
+assert(calcResult.y === 15, test_n);
+assert(calcResult.z === 10, test_n);
 
 
 test_n = 'eager test #6';
@@ -78,10 +78,10 @@ graphDefinition = {
     t: () => 7
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === 33, test_n);
-console.assert(calcResult.y === 12, test_n);
-console.assert(calcResult.z === 17, test_n);
-console.assert(calcResult.t === 7, test_n);
+assert(calcResult.x === 33, test_n);
+assert(calcResult.y === 12, test_n);
+assert(calcResult.z === 17, test_n);
+assert(calcResult.t === 7, test_n);
 
 
 test_n = 'eager test #7';
@@ -96,19 +96,19 @@ graphDefinition = {
 };
 
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === undefined, test_n);
-console.assert(calcResult.y === undefined, test_n);
-console.assert(calcResult.z === undefined, test_n);
-console.assert(calcResult.t === undefined, test_n);
-console.assert(calcResult.u === undefined, test_n);
-console.assert(calcResult.v === undefined, test_n);
+assert(calcResult.x === undefined, test_n);
+assert(calcResult.y === undefined, test_n);
+assert(calcResult.z === undefined, test_n);
+assert(calcResult.t === undefined, test_n);
+assert(calcResult.u === undefined, test_n);
+assert(calcResult.v === undefined, test_n);
 
 test_n = 'eager test #8';
 eagerGraph = new EagerGraph();
 graphDefinition = {
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(isEmptyObject(calcResult),test_n);
+assert(isEmptyObject(calcResult),test_n);
 
 test_n = 'eager test #9';
 eagerGraph = new EagerGraph();
@@ -121,12 +121,12 @@ graphDefinition = {
     k: (u) => u + 3
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.t === 5,test_n);
-console.assert(calcResult.z === 6,test_n);
-console.assert(calcResult.y === 7,test_n);
-console.assert(calcResult.k === undefined,test_n);
-console.assert(calcResult.u === undefined,test_n);
-console.assert(calcResult.x === 8,test_n);
+assert(calcResult.t === 5,test_n);
+assert(calcResult.z === 6,test_n);
+assert(calcResult.y === 7,test_n);
+assert(calcResult.k === undefined,test_n);
+assert(calcResult.u === undefined,test_n);
+assert(calcResult.x === 8,test_n);
 
 
 test_n = 'eager test #10';
@@ -140,12 +140,12 @@ graphDefinition = {
     k: (t,u) => t + u + 3
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.t === 5,test_n);
-console.assert(calcResult.z === 6,test_n);
-console.assert(calcResult.y === 7,test_n);
-console.assert(calcResult.k === undefined,test_n);
-console.assert(calcResult.u === undefined,test_n);
-console.assert(calcResult.x === 8,test_n);
+assert(calcResult.t === 5,test_n);
+assert(calcResult.z === 6,test_n);
+assert(calcResult.y === 7,test_n);
+assert(calcResult.k === undefined,test_n);
+assert(calcResult.u === undefined,test_n);
+assert(calcResult.x === 8,test_n);
 
 
 test_n = 'eager test #11';
@@ -168,21 +168,21 @@ graphDefinition = {
     q: () => 8,
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.a === 100, test_n);
-console.assert(calcResult.b === 2, test_n);
-console.assert(calcResult.k === 3, test_n);
-console.assert(calcResult.l === 4, test_n);
-console.assert(calcResult.m === 5, test_n);
-console.assert(calcResult.n === 6, test_n);
-console.assert(calcResult.p === 7, test_n);
-console.assert(calcResult.q === 8, test_n);
-console.assert(calcResult.t === 41, test_n);
-console.assert(calcResult.u === 8, test_n);
-console.assert(calcResult.v === 13, test_n);
-console.assert(calcResult.w === 18, test_n);
-console.assert(calcResult.x === 243, test_n);
-console.assert(calcResult.y === 242, test_n);
-console.assert(calcResult.z === 200, test_n);
+assert(calcResult.a === 100, test_n);
+assert(calcResult.b === 2, test_n);
+assert(calcResult.k === 3, test_n);
+assert(calcResult.l === 4, test_n);
+assert(calcResult.m === 5, test_n);
+assert(calcResult.n === 6, test_n);
+assert(calcResult.p === 7, test_n);
+assert(calcResult.q === 8, test_n);
+assert(calcResult.t === 41, test_n);
+assert(calcResult.u === 8, test_n);
+assert(calcResult.v === 13, test_n);
+assert(calcResult.w === 18, test_n);
+assert(calcResult.x === 243, test_n);
+assert(calcResult.y === 242, test_n);
+assert(calcResult.z === 200, test_n);
 
 
 test_n = 'eager test #11';
@@ -194,9 +194,9 @@ graphDefinition = {
 
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.x === undefined, test_n);
-console.assert(calcResult.y === undefined, test_n);
-console.assert(calcResult.z === undefined, test_n);
+assert(calcResult.x === undefined, test_n);
+assert(calcResult.y === undefined, test_n);
+assert(calcResult.z === undefined, test_n);
 
 
 test_n = 'eager test #12';
@@ -209,10 +209,10 @@ graphDefinition = {
 
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.v === -10, test_n);
-console.assert(calcResult.z === -9, test_n);
-console.assert(calcResult.y === -9, test_n);
-console.assert(calcResult.x === -17, test_n);
+assert(calcResult.v === -10, test_n);
+assert(calcResult.z === -9, test_n);
+assert(calcResult.y === -9, test_n);
+assert(calcResult.x === -17, test_n);
 
 let c=0;
 let oneChanceFunction = function (){
@@ -238,13 +238,13 @@ graphDefinition = {
 
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.v === -10, test_n);
-console.assert(calcResult.z === -9, test_n);
-console.assert(calcResult.p === -9, test_n);
-console.assert(calcResult.u === -8, test_n);
-console.assert(calcResult.t === -7, test_n);
-console.assert(calcResult.y === -6, test_n);
-console.assert(calcResult.x === -14, test_n);
+assert(calcResult.v === -10, test_n);
+assert(calcResult.z === -9, test_n);
+assert(calcResult.p === -9, test_n);
+assert(calcResult.u === -8, test_n);
+assert(calcResult.t === -7, test_n);
+assert(calcResult.y === -6, test_n);
+assert(calcResult.x === -14, test_n);
 
 
 test_n = 'eager test #14';
@@ -257,11 +257,11 @@ graphDefinition = {
     xs: ()=> [1,2,3,4,5,6]
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.n === 6, test_n);
-console.assert(calcResult.m === 3.5, test_n);
-console.assert((calcResult.m2 - 15.1666666666)**2 < 0.001, test_n);
-console.assert((calcResult.v - -2.916666666)**2 < 0.001, test_n+'4');
-console.assert(calcResult.xs.length === 6, test_n);
+assert(calcResult.n === 6, test_n);
+assert(calcResult.m === 3.5, test_n);
+assert((calcResult.m2 - 15.1666666666)**2 < 0.001, test_n);
+assert((calcResult.v - -2.916666666)**2 < 0.001, test_n+'4');
+assert(calcResult.xs.length === 6, test_n);
 
 
 test_n = 'eager test #15';
@@ -281,16 +281,16 @@ graphDefinition = {
     v: (a,b,w) => a*b*w
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.a === -9.5, test_n);
-console.assert(calcResult.b === 7.5, test_n);
-console.assert(calcResult.c === 5, test_n);
-console.assert(calcResult.d === -2, test_n);
-console.assert(calcResult.r === 5, test_n);
-console.assert(calcResult.t === -100, test_n);
-console.assert(calcResult.v === undefined, test_n);
-console.assert(calcResult.w === undefined, test_n);
-console.assert(calcResult.x === -616, test_n);
-console.assert(calcResult.y === -310, test_n);
+assert(calcResult.a === -9.5, test_n);
+assert(calcResult.b === 7.5, test_n);
+assert(calcResult.c === 5, test_n);
+assert(calcResult.d === -2, test_n);
+assert(calcResult.r === 5, test_n);
+assert(calcResult.t === -100, test_n);
+assert(calcResult.v === undefined, test_n);
+assert(calcResult.w === undefined, test_n);
+assert(calcResult.x === -616, test_n);
+assert(calcResult.y === -310, test_n);
 
 
 
@@ -303,11 +303,11 @@ graphDefinition = {
     x: (z) => z,
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.a === undefined, test_n);
-console.assert(calcResult.b === undefined, test_n);
-console.assert(calcResult.x === undefined, test_n);
-console.assert(calcResult.z === undefined, test_n);
-console.assert(calcResult.n === undefined, test_n);
+assert(calcResult.a === undefined, test_n);
+assert(calcResult.b === undefined, test_n);
+assert(calcResult.x === undefined, test_n);
+assert(calcResult.z === undefined, test_n);
+assert(calcResult.n === undefined, test_n);
 
 test_n = 'lazy test #17';
 eagerGraph = new EagerGraph();
@@ -319,10 +319,10 @@ graphDefinition = {
     xs: () => [1, 2, 3]
 };
 calcResult = eagerGraph.receiveGraph(graphDefinition).calcGraph();
-console.assert(calcResult.n === 3, test_n);
-console.assert(calcResult.m === 2, test_n);
-console.assert(calcResult.m2 === 2, test_n);
-console.assert(calcResult.v === 2, test_n);
+assert(calcResult.n === 3, test_n);
+assert(calcResult.m === 2, test_n);
+assert(calcResult.m2 === 2, test_n);
+assert(calcResult.v === 2, test_n);
 
 
 

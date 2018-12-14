@@ -1,6 +1,6 @@
 import {LazyGraph} from './lazy_graph.js';
 
-console.assert	= function(check, msg){
+function assert(check, msg){
     if( check )	return;
     throw new Error(msg || "Assertion failed!");
 };
@@ -14,7 +14,7 @@ graphDefinition = {
     x: () => 4
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 4, test_n);
+assert(calcResult === 4, test_n);
 
 
 test_n = 'lazy test #2';
@@ -24,7 +24,7 @@ graphDefinition = {
     y: () => 5
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('y');
-console.assert(calcResult === 5, test_n);
+assert(calcResult === 5, test_n);
 
 
 test_n = 'lazy test #3';
@@ -34,7 +34,7 @@ graphDefinition = {
     y: () => 5
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 9, test_n);
+assert(calcResult === 9, test_n);
 
 
 test_n = 'lazy test #4';
@@ -45,7 +45,7 @@ graphDefinition = {
     z: () => 10
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 19, test_n);
+assert(calcResult === 19, test_n);
 
 
 test_n = 'lazy test #5';
@@ -56,7 +56,7 @@ graphDefinition = {
     z: () => 10
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 29, test_n);
+assert(calcResult === 29, test_n);
 
 
 test_n = 'lazy test #6';
@@ -68,7 +68,7 @@ graphDefinition = {
     t: () => 7
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 33, test_n);
+assert(calcResult === 33, test_n);
 
 
 test_n = 'lazy test #7';
@@ -83,9 +83,9 @@ graphDefinition = {
 };
 try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-    console.assert(false, test_n);
+    assert(false, test_n);
 } catch (e) {
-    console.assert(e.toString() === "Error: The received graph doesn't define the vertex: w", test_n);
+    assert(e.toString() === "Error: The received graph doesn't define the vertex: w", test_n);
 }
 
 
@@ -95,9 +95,9 @@ graphDefinition = {
 };
 try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-    console.assert(false, test_n);
+    assert(false, test_n);
 } catch (e) {
-    console.assert(e.toString() === "Error: The received graph doesn't define the vertex: x", test_n);
+    assert(e.toString() === "Error: The received graph doesn't define the vertex: x", test_n);
 }
 
 
@@ -112,7 +112,7 @@ graphDefinition = {
     k: (u) => u + 3
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 8, test_n);
+assert(calcResult === 8, test_n);
 
 
 test_n = 'lazy test #10';
@@ -126,7 +126,7 @@ graphDefinition = {
     k: (t,u) => t + u + 3
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 8, test_n);
+assert(calcResult === 8, test_n);
 
 
 test_n = 'lazy test #11';
@@ -149,7 +149,7 @@ graphDefinition = {
     q: () => 8,
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === 243, test_n);
+assert(calcResult === 243, test_n);
 
 
 test_n = 'lazy test #11';
@@ -163,9 +163,9 @@ graphDefinition = {
 
 try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-    console.assert(false, test_n);
+    assert(false, test_n);
 } catch (e) {
-    console.assert(e.toString() === "Error: There is a loop in received graph", test_n);
+    assert(e.toString() === "Error: There is a loop in received graph", test_n);
 }
 
 test_n = 'lazy test #12';
@@ -178,7 +178,7 @@ graphDefinition = {
 
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === -17, test_n);
+assert(calcResult === -17, test_n);
 
 
 let c=0;
@@ -204,7 +204,7 @@ graphDefinition = {
 
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-console.assert(calcResult === -14, test_n);
+assert(calcResult === -14, test_n);
 
 
 test_n = 'lazy test #14';
@@ -217,7 +217,7 @@ graphDefinition = {
     xs: ()=> [1,2,3,4,5,6]
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
-console.assert(calcResult === 3.5, test_n);
+assert(calcResult === 3.5, test_n);
 
 
 test_n = 'lazy test #15'; // change arguments order - 1
@@ -230,7 +230,7 @@ graphDefinition = {
     xs: ()=> [1,2,3,4,5,6]
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
-console.assert(calcResult === 3.5, test_n);
+assert(calcResult === 3.5, test_n);
 
 
 test_n = 'lazy test #16'; // change arguments order - 2
@@ -243,7 +243,7 @@ graphDefinition = {
     xs: ()=> [1,2,3,4,5,6]
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
-console.assert(calcResult === 3.5, test_n);
+assert(calcResult === 3.5, test_n);
 
 
 test_n = 'lazy test #17';
@@ -256,7 +256,7 @@ graphDefinition = {
     xs: ()=> [1,2,3,4,5,6]
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m2');
-console.assert((calcResult - 15.1666666666)**2 < 0.001, test_n);
+assert((calcResult - 15.1666666666)**2 < 0.001, test_n);
 
 test_n = 'lazy test #18'; //calc v
 lazyGraph = new LazyGraph();
@@ -268,7 +268,7 @@ graphDefinition = {
     xs: ()=> [1,2,3,4,5,6]
 };
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('v');
-console.assert((calcResult - 2.916666666)**2 < 0.001, test_n);
+assert((calcResult - 2.916666666)**2 < 0.001, test_n);
 
 test_n = 'lazy test #19';
 lazyGraph = new LazyGraph();
@@ -281,9 +281,9 @@ graphDefinition = {
 
 try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
-    console.assert(false, test_n);
+    assert(false, test_n);
 } catch (e) {
-    console.assert(e.toString() === "Error: There is a loop in received graph", test_n);
+    assert(e.toString() === "Error: There is a loop in received graph", test_n);
 }
 
 test_n = 'lazy test #20';
@@ -298,13 +298,13 @@ graphDefinition = {
 };
 
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('n');
-console.assert(calcResult===3, test_n);
+assert(calcResult===3, test_n);
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
-console.assert(calcResult===2, test_n);
+assert(calcResult===2, test_n);
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m2');
-console.assert(calcResult===2, test_n);
+assert(calcResult===2, test_n);
 calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('v');
-console.assert(calcResult===2, test_n);
+assert(calcResult===2, test_n);
 
 
 console.log('lazy_graph_test: Ok');

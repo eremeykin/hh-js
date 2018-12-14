@@ -20,7 +20,7 @@ export class LazyGraph {
             let currentVertex = vertexStack[vertexStack.length -1];
             let nextIndex = indexStack[indexStack.length-1];
 
-            if (typeof this.vertices[currentVertex] == 'undefined'){
+            if (typeof this.vertices[currentVertex] === 'undefined'){
                     throw new Error("The received graph doesn't define the vertex: " + currentVertex);
             }
 

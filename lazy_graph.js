@@ -8,7 +8,19 @@ export class LazyGraph {
         for (let vertex in graph) {
             this.vertices[vertex] = parseFunctionArgs(graph[vertex]);
         }
+        this.cache = {}; // init empty cache
         return this;
+    }
+
+    evaluateCached(vertex, args){
+        if (this.cache.hasOwnProperty(vertex)){
+            return this.cache[vertex]
+        } else {
+            let newValue = this.graph[vertex](...args); // actually evaluate the function
+            // can't do this caching e.g if the function is not deterministic !
+            this.cache[vertex] = newValue; // cache result
+            return newValue;
+        }
     }
 
     calcVertex(vertex) {
@@ -27,9 +39,7 @@ export class LazyGraph {
             if (nextIndex + 1 > this.vertices[currentVertex].length){ // all child vertices has been visited
                 let numberOfArguments = this.vertices[currentVertex].length;
                 let currentArgs = resultStack.splice(resultStack.length - numberOfArguments,numberOfArguments);
-                let res = this.graph[currentVertex](...currentArgs); // evaluate function
-                this.graph[currentVertex] = ()=>res; // cache result,
-                // can't do this caching e.g if the function is not deterministic !
+                let res = this.evaluateCached(currentVertex, currentArgs);
                 resultStack.push(res);
                 vertexStack.pop();
                 indexStack.pop();

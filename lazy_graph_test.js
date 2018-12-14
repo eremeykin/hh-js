@@ -165,7 +165,7 @@ try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
     assert(false, test_n);
 } catch (e) {
-    assert(e.toString() === "Error: There is a loop in received graph", test_n);
+    assert(e.toString() === "Error: There is a loop in received graph: x->y->z->x", test_n);
 }
 
 test_n = 'lazy test #13';
@@ -273,17 +273,18 @@ assert((calcResult - 2.916666666)**2 < 0.001, test_n);
 test_n = 'lazy test #19';
 lazyGraph = new LazyGraph();
 graphDefinition = {
-    n: (a) => a,
-    b: (n) => n,
-    z: (x) => x,
-    x: (z) => z,
+    n: (a) => 3,
+    b: (n) => 4,
+    a: () => 0,
+    z: (x) => 5,
+    x: (z) => 6,
 };
 
 try{
     calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
     assert(false, test_n);
 } catch (e) {
-    assert(e.toString() === "Error: There is a loop in received graph", test_n);
+    assert(e.toString() === "Error: There is a loop in received graph: x->z->x", test_n);
 }
 
 test_n = 'lazy test #20';

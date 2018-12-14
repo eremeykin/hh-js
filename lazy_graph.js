@@ -39,7 +39,7 @@ export class LazyGraph {
                 if (oldIndexOfSameVertex>-1){
                     let loopSeq =  vertexStack.slice(oldIndexOfSameVertex, vertexStack.length);
                     loopSeq.push(nextVertex);
-                    throw new Error("There is a loop in received graph" + loopSeq.join("->"));
+                    throw new Error("There is a loop in received graph: " + loopSeq.join("->"));
                 }
                 vertexStack.push(nextVertex);
                 indexStack.push(indexStack.pop()+1);

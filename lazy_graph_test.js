@@ -152,7 +152,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 assert(calcResult === 243, test_n);
 
 
-test_n = 'lazy test #11';
+test_n = 'lazy test #12';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y) => y + 1,
@@ -168,7 +168,7 @@ try{
     assert(e.toString() === "Error: There is a loop in received graph", test_n);
 }
 
-test_n = 'lazy test #12';
+test_n = 'lazy test #13';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y,z) =>z + y + 1,
@@ -191,7 +191,7 @@ let oneChanceFunction = function (){
 };
 
 
-test_n = 'lazy test #13';
+test_n = 'lazy test #14';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     x: (y,z) =>z + y + 1,
@@ -207,7 +207,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('x');
 assert(calcResult === -14, test_n);
 
 
-test_n = 'lazy test #14';
+test_n = 'lazy test #15';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
@@ -220,7 +220,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
 assert(calcResult === 3.5, test_n);
 
 
-test_n = 'lazy test #15'; // change arguments order - 1
+test_n = 'lazy test #16'; // change arguments order - 1
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
@@ -233,7 +233,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
 assert(calcResult === 3.5, test_n);
 
 
-test_n = 'lazy test #16'; // change arguments order - 2
+test_n = 'lazy test #17'; // change arguments order - 2
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
@@ -246,7 +246,7 @@ calcResult = lazyGraph.receiveGraph(graphDefinition).calcVertex('m');
 assert(calcResult === 3.5, test_n);
 
 
-test_n = 'lazy test #17';
+test_n = 'lazy test #18';
 lazyGraph = new LazyGraph();
 graphDefinition = {
     n: (xs) =>  xs.length ,
